@@ -36,7 +36,7 @@
           <input
             type="text"
             id="link"
-            name="your-link"
+            name="yourlink"
             placeholder="Enter the link here"
           />
           <button type="button" id="output">Short Now</button>
@@ -45,6 +45,8 @@
             our URL Shortener to create a shortened link making it easy to
             remember
           </p>
+
+          <p id="generatedurl"></p>
         </div>
       </div>
     </div>
@@ -64,6 +66,13 @@
             )
           ) {
             //code here for ajax
+            $.post("https://spicehook.com/shorturl/addurl.php", {
+              yourlink: jQuery("#link").val(),
+            }).done(function (response) {
+              swal("Wow! URL is generated", "", "success");
+              response = JSON.parse(response);
+              console.log(response);
+            });
           } else {
             swal("Please enter a valid URL", "", "error");
             jQuery("#link").val("");
