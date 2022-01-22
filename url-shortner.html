@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+
+    <title>Short URL</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <div class="img-place">
+          <lottie-player
+            src="https://assets6.lottiefiles.com/packages/lf20_ftcegyeh.json"
+            background="transparent"
+            speed="0.5"
+            style="width: 600px; height: 300px"
+            loop
+            autoplay
+          ></lottie-player>
+        </div>
+        <h1 class="heading">URL Shortner</h1>
+        <div class="First-Box">
+          <h3 class="field-Name">Paste the URL to be shortened</h3>
+          <input
+            type="text"
+            id="link"
+            name="your-link"
+            placeholder="Enter the link here"
+          />
+          <button type="button" id="output">Short Now</button>
+          <p class="description">
+            URL Shortner at is a free tool to shorten a URL or reduce a link Use
+            our URL Shortener to create a shortened link making it easy to
+            remember
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#output").click(function () {
+          if (jQuery("#link").val() == "") {
+            swal("Please enter a valid URL", "", "error");
+            jQuery("#link").focus();
+            return false;
+          }
+
+          if (
+            /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(
+              jQuery("#link").val()
+            )
+          ) {
+            //code here for ajax
+          } else {
+            swal("Please enter a valid URL", "", "error");
+            jQuery("#link").val("");
+            jQuery("#link").focus();
+            return false;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
